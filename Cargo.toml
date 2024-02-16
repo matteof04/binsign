@@ -1,0 +1,30 @@
+[package]
+name = "binsign"
+authors = ["Matteo Franceschini"]
+version = "0.1.0"
+edition = "2021"
+description = "A tool to sign and encode file"
+license = "BSD-3-Clause-Clear"
+readme = "README.md"
+repository = "https://github.com/matteof04/binsign"
+
+[dependencies]
+bincode = "1"
+rand_chacha = "0.3"
+rand = "0.8"
+ed25519-dalek = { version = "2", features = ["rand_core", "pkcs8", "serde", "asm", "digest"] }
+serde = { version = "1", features = ["derive"] }
+blake3 = { version = "1", features = ["rayon"] }
+log = "0.4"
+pretty_env_logger = "0.5"
+thiserror = "1"
+clap = { version = "4", features = ["derive"] }
+clap_complete = "4"
+serde_bytes = "0.11"
+zstd = "0.13"
+curve25519-dalek = { version = "4" }
+
+[profile.release]
+codegen-units = 1
+lto = "fat"
+opt-level = 3

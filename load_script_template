@@ -1,0 +1,13 @@
+export PATH="$(pwd):$PATH"
+
+current_shell=$(ps -p $$ -o comm=)
+
+script_name="COMPLETE_DIR/BIN_NAME.$current_shell"
+
+if [ -f "$script_name" ]; then
+    echo "Executing script: $script_name"
+    source "$script_name"
+else
+    echo "The script for the shell $current_shell does not exist."
+fi
+
